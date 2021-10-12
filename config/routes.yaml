@@ -1,0 +1,3 @@
+get_products:
+    path: /
+    controller: App\UI\Rest\GetProductsController::__invoke
