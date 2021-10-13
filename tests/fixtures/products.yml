@@ -1,0 +1,3 @@
+App\Domain\Product:
+  product:
+    __construct: ['001', 'boots', 'boots']
