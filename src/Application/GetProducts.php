@@ -22,7 +22,7 @@ class GetProducts
 
         $productsData = array_map(
             function ($product) {
-                return ProductData::fromProduct($product);
+                return ProductData::fromProduct($product)->toArray();
                 },
             $products
         );

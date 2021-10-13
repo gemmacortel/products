@@ -23,14 +23,14 @@ class GetProductsTest extends TestCase
 
     public function testHappyPath(): void
     {
-        $product = new Product('a', 'b', 'c');
+        $product = new Product('a', 'b', 'c', 12);
         $foundProducts = [$product];
         $this->repository
             ->expects(self::once())
             ->method('findAll')
             ->willReturn($foundProducts);
 
-        $actualResponse = $this->getProducts->execute();
+        $actualResponse = $this->getProducts->execute([]);
 
         self::assertEquals([ProductData::fromProduct($product)], $actualResponse);
     }

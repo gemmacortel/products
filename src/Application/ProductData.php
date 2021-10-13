@@ -21,15 +21,21 @@ class ProductData
      */
     private $category;
 
-    private function __construct($sku, $name, $category)
+    /**
+     * @var array
+     */
+    private $priceData;
+
+    private function __construct(string $sku, string $name, string $category, array $priceData)
     {
         $this->sku = $sku;
         $this->name = $name;
         $this->category = $category;
+        $this->priceData = $priceData;
     }
 
     public static function fromProduct(Product $product) {
-        return new self($product->sku(), $product->name(), $product->category());
+        return new self($product->sku(), $product->name(), $product->category(), $product->getPriceData());
     }
 
     public function getSku(): string
@@ -45,6 +51,11 @@ class ProductData
     public function getCategory(): string
     {
         return $this->category;
+    }
+
+    public function priceData(): array
+    {
+        return $this->priceData;
     }
 
     public function setSku(string $sku): self
@@ -65,12 +76,18 @@ class ProductData
         return $this;
     }
 
-    public function toArray()
+    public function setPriceData(array $priceData): void
+    {
+        $this->priceData = $priceData;
+    }
+
+    public function toArray(): array
     {
         return [
             'sku' => $this->sku,
             'name' => $this->name,
-            'category' => $this->category
+            'category' => $this->category,
+            'price' => $this->priceData,
         ];
     }
 }

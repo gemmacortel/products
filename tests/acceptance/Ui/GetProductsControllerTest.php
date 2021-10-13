@@ -28,12 +28,24 @@ class GetProductsControllerTest extends WebTestCase
             [
                 'sku' => '001',
                 'name' => 'boots',
-                'category' => 'boots'
+                'category' => 'boots',
+                'price' => [
+                    'original' => 50,
+                    'final' => 50,
+                    'discount_percentage' => null,
+                    'currency' => 'EUR'
+                ]
             ],
             [
                 'sku' => '002',
                 'name' => 'boots',
-                'category' => 'boots'
+                'category' => 'boots',
+                'price' => [
+                    'original' => 50,
+                    'final' => 50,
+                    'discount_percentage' => null,
+                    'currency' => 'EUR'
+                ]
             ]
         ];
 
@@ -61,7 +73,13 @@ class GetProductsControllerTest extends WebTestCase
             [
                 'sku' => '001',
                 'name' => 'boots',
-                'category' => 'boots'
+                'category' => 'boots',
+                'price' => [
+                    'original' => 50,
+                    'final' => 50,
+                    'discount_percentage' => null,
+                    'currency' => 'EUR'
+                ]
             ],
         ];
 
