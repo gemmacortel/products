@@ -1,3 +1,5 @@
 App\Domain\Product:
-  product:
+  first_product:
     __construct: ['001', 'boots', 'boots']
+  second_product:
+    __construct: [ '002', 'boots', 'boots' ]

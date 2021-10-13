@@ -16,9 +16,9 @@ class GetProducts
         $this->repository = $repository;
     }
 
-    public function execute(): array
+    public function execute(array $params): array
     {
-        $products = $this->repository->findAll();
+        $products = $this->repository->findBy($params);
 
         $productsData = array_map(
             function ($product) {

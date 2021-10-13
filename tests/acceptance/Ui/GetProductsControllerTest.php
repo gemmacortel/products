@@ -19,18 +19,61 @@ class GetProductsControllerTest extends WebTestCase
         $loader->load(['tests/fixtures/products.yml']);
     }
 
-    public function testEmptyBody(): void
+    public function testHappyPath(): void
     {
         $response = $this->doRequest();
+        $actualResponseContent = json_decode($response->getContent(), true);
+
+        $expectedResponseContent = [
+            [
+                'sku' => '001',
+                'name' => 'boots',
+                'category' => 'boots'
+            ],
+            [
+                'sku' => '002',
+                'name' => 'boots',
+                'category' => 'boots'
+            ]
+        ];
 
         self::assertResponseIsSuccessful($response);
-        self::assertNotEmpty(json_decode($response->getContent()));
+        self::assertEquals($expectedResponseContent, $actualResponseContent);
 
     }
 
-    private function doRequest(): Response
+    public function testFilterNotFound(): void
     {
-        $this->client->request('GET', '/');
+        $response = $this->doRequest('?name=bananas');
+        $actualResponseContent = json_decode($response->getContent(), true);
+
+        self::assertResponseIsSuccessful($response);
+        self::assertEmpty($actualResponseContent);
+
+    }
+
+    public function testFilterFound(): void
+    {
+        $response = $this->doRequest('?sku=001');
+        $actualResponseContent = json_decode($response->getContent(), true);
+
+        $expectedResponseContent = [
+            [
+                'sku' => '001',
+                'name' => 'boots',
+                'category' => 'boots'
+            ],
+        ];
+
+        self::assertResponseIsSuccessful($response);
+        self::assertEquals($expectedResponseContent, $actualResponseContent);
+
+    }
+
+    private function doRequest(string $queryParams = ''): Response
+    {
+        $uri = '/' . $queryParams;
+        $this->client->request('GET', $uri);
 
         return $this->client->getResponse();
     }
