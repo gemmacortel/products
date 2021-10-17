@@ -90,7 +90,7 @@ class GetProductsControllerTest extends WebTestCase
 
     private function doRequest(string $queryParams = ''): Response
     {
-        $uri = '/' . $queryParams;
+        $uri = '/products' . $queryParams;
         $this->client->request('GET', $uri);
 
         return $this->client->getResponse();
