@@ -32,8 +32,10 @@ class GetProductsController extends AbstractController
         //TODO substitute array with a DTO
         $query = array_filter($request->query->all());
 
+        //TODO error & exception handling
         $productsData = $this->getProducts->execute($query);
 
+        //TODO use pagination
         return JsonResponse::fromJsonString($this->serializer->serialize($productsData, 'json'), Response::HTTP_OK);
     }
 }
