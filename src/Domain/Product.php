@@ -94,13 +94,13 @@ class Product
     public function getPriceData(): array
     {
         $discount = $this->applicableDiscount();
-        $finalPrice = $discount ? $this->originalPrice - (($discount/100) * $this->originalPrice) : $this->originalPrice;
+        $finalPrice = $discount ? $this->originalPrice - (($discount->percentage()/100) * $this->originalPrice) : $this->originalPrice;
 
         //TODO use DTO
         return [
             'original' => $this->originalPrice,
             'final' => $finalPrice,
-            'discount_percentage' => $discount ? $discount->percentage() : null,
+            'discount_percentage' => $discount ? $discount->percentage() . '%': null,
             'currency' => 'EUR'
         ];
     }

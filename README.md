@@ -1,5 +1,5 @@
 **To install the application**
-make install
+make install If there is a DB error, please try again.
 
 **To start the application**
 make up
