@@ -27,6 +27,7 @@ class Discount
     /**
      * @var Product
      * @ORM\ManyToOne(targetEntity="App\Domain\Product", inversedBy="discounts")
+     * @ORM\JoinColumn(name="sku", referencedColumnName="sku")
      */
     private $product;
 

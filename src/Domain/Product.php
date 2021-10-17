@@ -12,13 +12,7 @@ use Doctrine\Common\Collections\Collection;
 class Product
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
-
-    /**
+      @ORM\Id()
      * @ORM\Column(type="string", length=255, unique=true, nullable=false)
      * @var string
      */
