@@ -16,6 +16,8 @@ class GetProductsControllerTest extends WebTestCase
     {
         $this->client = static::createClient();
         $loader = static::$kernel->getContainer()->get('fidry_alice_data_fixtures.loader.doctrine');
+
+        //TODO add discounts to fixtures
         $loader->load(['tests/fixtures/products.yml']);
     }
 
